@@ -141,7 +141,7 @@ class Images(object):
         # Mutating the scheme syntax to match is a little gross, but it works
         # for today.
         norm_path = os.path.normpath(local_path)
-        if local_path.replace('://', ':/') != norm_path or norm_path.startswith('../'):
+        if norm_path.startswith('../'):
             raise ValueError('path is not normalized : ' + local_path)
 
         external = kwargs.pop('external', None) or kwargs.pop('_external', None)
